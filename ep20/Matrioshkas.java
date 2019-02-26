@@ -17,8 +17,13 @@ public class Matrioshkas {
                     return;
                 }
                 else {
-                    if (s.peek() == -input) {
+                    int sum = 0;
+                    while (s.peek() > 0) {
+                        sum -= s.pop();
+                    }
+                    if (sum > s.peek() && s.peek() == -input) {
                         s.pop();
+                        s.push(input);
                     }
                     else {
                         System.out.println(":-( Try again.");
@@ -31,21 +36,17 @@ public class Matrioshkas {
                     s.push(input);
                 }
                 else {
-                    if (s.peek() >= input) {
-                        System.out.println(":-( Try again.");
-                        return;
-                    }
-                    else {
-                        s.push(input);
-                    }
+                    s.push(input);
                 }
             }
         }
-        if (s.empty()) {
+        if (s.size() == 1 && s.peek() > 0) {
             System.out.println(":-) Matrioshka!");
+            return;
         }
         else {
             System.out.println(":-( Try again.");
+            return;
         }
     }
 }
