@@ -14,7 +14,6 @@ public class PyramidMax {
             py.addLayer(layer);
         }
         py.print();
-        System.out.println(py.getMaximumSum());
     }
 }
 
@@ -34,20 +33,6 @@ class Pyramid<E> {
 
     Pyramid<E> getRightPyramid() {
         return new Pyramid<E>(topNode.getRightNode());
-    }
-
-    int getMaximumSum() {
-        if (topNode.getElement() instanceof Number) {
-            if (getNumberOfLayers() == 1) {
-                return (int) topNode.getElement();
-            }
-            else {
-                return (int) topNode.getElement() + Math.max(getLeftPyramid().getMaximumSum(), getRightPyramid().getMaximumSum());
-            }
-        }
-        else {
-            return -1;
-        }
     }
 
     int getNumberOfLayers() {
